@@ -1,9 +1,5 @@
 var log = (function() {
     var _log = [];
-    var _ts = function() {
-        a = new Date();
-        return a.getUTCHours() + ":" + a.getUTCMinutes() + ":" + a.getUTCSeconds();
-    }
     var _ret = function(c) {
         return _log[_log.length-1][c];
     }
