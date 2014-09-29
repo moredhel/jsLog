@@ -19,10 +19,6 @@ var log = (function() {
     var _f = function(i,l) {
         l = l || 'INFO';
         _log.add({'msg': i, 'lvl': l});
-        if (l === "ERROR") {
-            console.trace();
-            return _p();
-        }
         if (DEBUG) {
 
             return _p();
