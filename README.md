@@ -7,7 +7,7 @@ Usage is simple:
 
     log(message, level);
     
-message: any arbitrary string/object
+message: any arbitrary string/object  
 level: user defined level (defaults to `INFO`). has reserved words `ERROR` and `LOG`.
   
     log();
