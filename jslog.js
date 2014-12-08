@@ -2,7 +2,8 @@ var log = (function() {
 var Logger = function() {
     //lower levels are more critical
     //by default, only log errors
-    var debug = DEBUG;
+    var debug = 3;
+    if (typeof DEBUG !== "undefined") debug = DEBUG;
     var def = 3; //the default message level, if none is specified
     var _log = [];
     var lvls = {
@@ -25,7 +26,7 @@ var Logger = function() {
     }
     var _f = function(i,l) {
         l = l || 'INFO';
-        _log.add({'msg': i, 'lvl': l.toUpperCase()});
+        _log.push({'msg': l, 'lvl': i.toUpperCase()});
         var currentlvl = lvls[l.toUpperCase()];
         if (currentlvl === undefined) { currentlvl = def; }
         if (currentlvl <= debug) {
@@ -33,7 +34,7 @@ var Logger = function() {
         }
     }
     return {
-        'log':function(i,l) {  if (i === undefined) { return _log; }_f(i,l); },
+        'log':function(l, i) {  if (i === undefined) { return _log; }_f(i,l); },
         'debuglvl': function(l) { if (l === undefined) return debug; debug = l;},
         'setlvls': function(l) { if (l === undefined) return lvls; lvls = l;},
         'default': function(l) { if (l === undefined) return def; def = l;}
@@ -50,3 +51,4 @@ delete __a;
 delete __i;
 return log;
 })();
+
